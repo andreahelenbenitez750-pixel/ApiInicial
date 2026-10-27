@@ -6,6 +6,17 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 
 builder.Services.AddControllers();
+
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("Angular", policy =>
+    {
+        policy.WithOrigins("http://localhost:4200")
+              .AllowAnyHeader()
+              .AllowAnyMethod();
+    });
+});
+
 var conexionLocal = builder.Configuration.GetConnectionString("CatalogoConection");
 builder.Services.AddDbContext<AppDbContext>(options =>
     options.UseNpgsql(conexionLocal)
@@ -33,6 +44,8 @@ if (app.Environment.IsDevelopment())
     app.MapOpenApi();
 }
 
+app.UseCors("Angular");
+
 app.UseHttpsRedirection();
 
 app.UseAuthorization();
@@ -40,3 +53,4 @@ app.UseAuthorization();
 app.MapControllers();
 
 app.Run();
+
