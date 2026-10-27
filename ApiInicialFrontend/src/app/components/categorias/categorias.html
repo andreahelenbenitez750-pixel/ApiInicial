@@ -1,0 +1,11 @@
+<h1>Listado de categorías</h1>
+
+<section class="lista-categorias">
+  @for (categoria of listaCategorias(); track categoria.id) {
+    <article class="categoria">
+      <h2>{{ categoria.nombre }}</h2>
+    </article>
+  } @empty {
+    <p>No hay categorías para mostrar.</p>
+  }
+</section>

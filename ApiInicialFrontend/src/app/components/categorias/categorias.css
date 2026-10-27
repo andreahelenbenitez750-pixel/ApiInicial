@@ -1,0 +1,20 @@
+.lista-categorias {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 16px;
+  margin: 20px 0;
+}
+
+.categoria {
+  background: white;
+  padding: 18px;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+}
+
+.categoria h2 {
+  font-size: 17px;
+  color: #334155;
+  margin: 0;
+}

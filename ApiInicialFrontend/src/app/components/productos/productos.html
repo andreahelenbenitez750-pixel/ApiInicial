@@ -1,0 +1,26 @@
+<h1>Catálogo de productos</h1>
+
+<section class="catalogo">
+  @for (producto of listaProductos(); track producto.id) {
+    <article class="tarjeta">
+      <h2>{{ producto.nombre }}</h2>
+
+      <p class="precio">Bs {{ producto.precio }}</p>
+      <p><strong>Stock:</strong> {{ producto.stock }} unidades</p>
+      <p><strong>Categoría:</strong> {{ producto.nombreCategoria }}</p>
+
+      <p>
+        <strong>Estado:</strong>
+        <span
+            class="estado"
+            [appEstadoProducto]="producto.estado">
+            {{ producto.estado | estadoProducto }}
+        </span>
+      </p>
+    </article>
+  } @empty {
+    <p>No hay productos para mostrar.</p>
+  }
+</section>
+
+
